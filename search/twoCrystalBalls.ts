@@ -6,14 +6,14 @@
  * be true!
  * [false, false, false, false, true, true, true]
  *
- *
  * In Binary we cut the space in half, but in this case, we are jumping.
  * We jump the SQUARE ROOT of n until it breaks.
  *
  * PLAIN SPEAK:
- * 1. We jump through the array square root of N times.
+ * 1. We jump through the array square root of N times by the square root.
  * 2. Once we find the place where the 1st crystal ball breaks, we walk back square
  * root of n once and find the place where the 2nd ball wil break.
+ * 3. Takes in array and return index.
  *
  * This is better than Linear time and Binary because Linear is linear and too long.
  * Binary won't work because once you find the spot where the 1st ball breaks,
