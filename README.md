@@ -8,7 +8,7 @@ _Absolutely subject to change._
 
 Installing:
 
-- Good idea to have Node v16 install on machine.
+- Good idea to have Node <= v16 install on machine.
 - This also assume YOU HAVE node install on your path variable.
 - `npm i`
 
