@@ -5,23 +5,17 @@
  * You have the first node, and you can allocate in memory the next node.
  * You have a node which contains a value AND a reference to the next node.
  *
- * A single-ly linked list is a -> b -> c -> d (You can walk backwards since B doesn't have a reference to A)
- * A double-ly linked list
- *
+ * A single-ly linked list is a -> b -> c -> d (You can't walk backwards since B doesn't have a reference to A)
+ * A double-ly linked list a <-> b <-> c <-> d (You CAN walk backwards since B doesn't have a reference to A)
  *
  * Single-ly Linked list: Node contains Val & Next (Single Direction)
  * Double-ly Linked list: Node contains Val & Next & Prev (Bidirectional)
  *
- *
  * Big O
  * prepend/append O(1)
  * insertion in middle O(n)
- * deletion form ends O(n)
- * get start end O(1)
- * get middle O(n)
- *
- * An Idea of the API:
- * EXAMPLE BELOW
+ * deletion O(n)
+ * get index O(n)
  */
 
 // Example of using Generics ofc
@@ -185,6 +179,7 @@ class LinkedList<T> implements ILinkedList<T> {
 	}
 }
 
+// THIS IS EXAMPLE class that will use the linked List data structure.
 class Post {
 	public title: string | null = null;
 	constructor(title: string) {
