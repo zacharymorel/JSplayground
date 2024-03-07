@@ -56,12 +56,19 @@ class LinkedList<T> implements ILinkedList<T> {
 
 		if (!this._headN) return arr;
 
-		const addToArr = (node: ListNode<T>): T[] => {
-			arr.push(node.data);
-			return node.next ? addToArr(node.next) : arr;
-		};
+		let nextN: ListNode<T> | null = this._headN;
+		let currentN: ListNode<T> = this._headN;
 
-		return addToArr(this._headN);
+		while (nextN) {
+			if (nextN) {
+				currentN = nextN;
+				arr.push(currentN.data);
+			}
+
+			nextN = nextN.next;
+		}
+
+		return arr;
 	}
 
 	public get length(): number {
@@ -79,13 +86,13 @@ class LinkedList<T> implements ILinkedList<T> {
 		if (!this._headN) {
 			this._headN = n;
 		} else {
-			// Recursive function to iterate through the structure and find the last node.
-			const getLast = (currNode: ListNode<T>): ListNode<T> => {
-				// if the node has a next, continue recursive function, ELSE return value
-				return currNode?.next ? getLast(currNode.next) : currNode;
-			};
+			let lastN;
+			let nextN: ListNode<T> | null = this._headN;
 
-			const lastN = getLast(this._headN);
+			while (nextN) {
+				if (nextN && nextN.next === null) lastN = nextN;
+				nextN = nextN.next;
+			}
 
 			if (lastN) {
 				// Old Tail next is this node
@@ -96,6 +103,7 @@ class LinkedList<T> implements ILinkedList<T> {
 		}
 	}
 
+	// Inserts new node from graph at given index
 	public insertAt(node: T, index: number): void | null {
 		const len = this.length;
 		if (!index || len === 0 || len - 1 < index) return null;
@@ -136,7 +144,7 @@ class LinkedList<T> implements ILinkedList<T> {
 	// Removes node from graph
 	public remove(node: ListNode<T>): void {
 		// Case where the node to remove is the first node.
-		if (!this._headN?.prev) this._headN = node.next;
+		if (!node.prev) this._headN = node.next;
 		else {
 			// Get node to delete's previous node and assign it's next value the node to delete's next.
 			const deleteNodePrev = node.prev;
