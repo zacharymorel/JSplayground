@@ -32,6 +32,14 @@
  *
  */
 
+/**
+ * IMPORTANT Note about class below, other than Array Buffer and Type Arrays, JS doesn't
+ * have a way to declare a static, fixed type array with a certain length for memory allocation.
+ * So this is just an close example of the data structure.
+ * Array Buffer and Type Arrays are only subjected to allow primitive types of ints; where as,
+ * C++, Java and C# allow you to store a whole bunch of different types.
+ */
+
 class ArrayList<T> {
 	public length: number;
 	private _list: T[];
