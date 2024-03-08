@@ -2,10 +2,12 @@
  * Can be a singly or doubly linked list.
  * Properties on Data structure:
  *  value
- *  next
+ *  next?
  *  prev
  *
  * A stack is backwards to a queue.
+ * We don't need a doubly linked list.
+ * Power of a stack is how constraining it is when mutating data.
  * First In LAST out.
  *
  * A <- B <- C <- D
