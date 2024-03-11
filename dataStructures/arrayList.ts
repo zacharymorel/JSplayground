@@ -16,7 +16,7 @@
  *
  * - We don't use ArrayLists for queue structures at all if we can help it.
  * - With Enqueue and Dequeue, we have to shift over EVERY array index.
- *
+ * - 0 index is Head and tail is length - 1;
  * - Array Lists good with push and pop, not good with enqueue and dequeue.
  * O(1) push and pop
  * o(n) enqueue and dequeue.
