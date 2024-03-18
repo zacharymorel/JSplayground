@@ -88,8 +88,8 @@ function partition(
 		}
 	}
 
-	loPointer++; // The lo index is moved up  last time for moving the pivot to the middle.
-	arr[hi] = arr[loPointer]; // swap current lo with hi
+	loPointer++; // The lo index is moved up last time for moving the pivot to the middle.
+	arr[hi] = arr[loPointer]; // swap current hi with lo
 	arr[loPointer] = pivot; // Current lo will be the pivots spot.
 	//WE ARE SORTING ALL PIVOTS until there is only 1 element left in each subset array.
 	console.log('NEXT PIVOT index: ', loPointer);
