@@ -9,7 +9,7 @@ class TreeNode<T> {
 }
 
 class DFSTree<T> {
-	root: TreeNode<T> | null;
+	private root: TreeNode<T> | null;
 
 	constructor() {
 		this.root = null;

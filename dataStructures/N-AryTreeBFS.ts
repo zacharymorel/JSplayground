@@ -10,12 +10,29 @@ class BfsTreeNode<T> {
 }
 
 class NaryTree<T> {
-	root: BfsTreeNode<T> | null = null;
+	private root: BfsTreeNode<T> | null = null;
 
 	constructor(root?: BfsTreeNode<T>) {
 		if (root) {
 			this.root = root;
 		}
+	}
+
+	private buildNode(nodeData: any): BfsTreeNode<T> {
+		const node = new BfsTreeNode<T>(nodeData.value);
+		if (nodeData.children) {
+			node.children = nodeData.children.map((child: any) =>
+				this.buildNode(child)
+			);
+		}
+		return node;
+	}
+
+	buildTreeFromJSON<T>(json: string): void {
+		const rootNode = JSON.parse(json);
+
+		const root = this.buildNode(rootNode);
+		this.root = root;
 	}
 
 	// Insert newValue as a child of the node with parentValue
@@ -87,22 +104,9 @@ const jsonPayload = `{
   ]
 }`;
 
-function buildTreeFromJSON<T>(json: string): NaryTree<T> {
-	const rootNode = JSON.parse(json);
-
-	function buildNode(nodeData: any): BfsTreeNode<T> {
-		const node = new BfsTreeNode<T>(nodeData.value);
-		if (nodeData.children) {
-			node.children = nodeData.children.map((child: any) => buildNode(child));
-		}
-		return node;
-	}
-
-	const root = buildNode(rootNode);
-	return new NaryTree<T>(root);
-}
-
-const bfsTree = buildTreeFromJSON<number>(jsonPayload);
+// const bfsTree = buildTreeFromJSON<number>(jsonPayload);
+const bfsTree = new NaryTree();
+bfsTree.buildTreeFromJSON<number>(jsonPayload);
 bfsTree.insertAt(8, 4); // Inserting 8 as a child of 4
 bfsTree.insertAt(9, 4); // Inserting 8 as a child of 4
 bfsTree.insertAt(10, 4); // Inserting 8 as a child of 4
