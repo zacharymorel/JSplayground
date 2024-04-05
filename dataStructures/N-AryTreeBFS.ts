@@ -1,6 +1,7 @@
-class TreeNode<T> {
+// BFS CLASS BASED
+class BfsTreeNode<T> {
 	value: T;
-	children: TreeNode<T>[];
+	children: BfsTreeNode<T>[];
 
 	constructor(value: T) {
 		this.value = value;
@@ -9,38 +10,43 @@ class TreeNode<T> {
 }
 
 class NaryTree<T> {
-	root: TreeNode<T> | null = null;
+	root: BfsTreeNode<T> | null = null;
 
-	constructor(root?: TreeNode<T>) {
+	constructor(root?: BfsTreeNode<T>) {
 		if (root) {
 			this.root = root;
 		}
 	}
 
-	insert(newValue: T): void {
-		const newNode = new TreeNode(newValue);
+	// Insert newValue as a child of the node with parentValue
+	insertAt(newValue: T, parentValue: T): boolean {
 		if (!this.root) {
-			this.root = newNode;
-			return;
+			console.log('Tree is empty. Inserting at root.');
+			this.root = new BfsTreeNode(newValue);
+			return true;
 		}
 
-		const queue: TreeNode<T>[] = [this.root];
+		const queue: BfsTreeNode<T>[] = [this.root];
 		while (queue.length > 0) {
 			const current = queue.shift()!;
-			// If the current node can accept more children, add the new node here
-			// For a more balanced tree, you might want to check for the node with the least children
-			// This simple implementation just adds to the first available node
-			current.children.push(newNode);
-			return;
+			if (current.value === parentValue) {
+				current.children.push(new BfsTreeNode(newValue));
+				return true; // Successfully inserted
+			}
+
+			current.children.forEach((child) => queue.push(child));
 		}
+
+		console.log(`Parent node with value ${parentValue} not found.`);
+		return false; // Parent not found, insertion not done
 	}
 
-	find(targetValue: T): TreeNode<T> | null {
+	find(targetValue: T): BfsTreeNode<T> | null {
 		if (!this.root) {
 			return null;
 		}
 
-		const queue: TreeNode<T>[] = [this.root];
+		const queue: BfsTreeNode<T>[] = [this.root];
 		while (queue.length > 0) {
 			const current = queue.shift()!;
 			if (current.value === targetValue) {
@@ -52,7 +58,7 @@ class NaryTree<T> {
 		return null; // Not found
 	}
 
-	print(node: TreeNode<T> | null = this.root, level: number = 0): void {
+	print(node: BfsTreeNode<T> | null = this.root, level: number = 0): void {
 		if (!node) return;
 
 		console.log(' '.repeat(level * 2) + node.value);
@@ -84,8 +90,8 @@ const jsonPayload = `{
 function buildTreeFromJSON<T>(json: string): NaryTree<T> {
 	const rootNode = JSON.parse(json);
 
-	function buildNode(nodeData: any): TreeNode<T> {
-		const node = new TreeNode<T>(nodeData.value);
+	function buildNode(nodeData: any): BfsTreeNode<T> {
+		const node = new BfsTreeNode<T>(nodeData.value);
 		if (nodeData.children) {
 			node.children = nodeData.children.map((child: any) => buildNode(child));
 		}
@@ -96,11 +102,13 @@ function buildTreeFromJSON<T>(json: string): NaryTree<T> {
 	return new NaryTree<T>(root);
 }
 
-const tree = buildTreeFromJSON<number>(jsonPayload);
-tree.insert(8); // Inserting a new node with value 8
-tree.print(); // Displaying the tree structure
+const bfsTree = buildTreeFromJSON<number>(jsonPayload);
+bfsTree.insertAt(8, 4); // Inserting 8 as a child of 4
+bfsTree.insertAt(9, 4); // Inserting 8 as a child of 4
+bfsTree.insertAt(10, 4); // Inserting 8 as a child of 4
+bfsTree.print(); // Displaying the tree structure
 
-const foundNode = tree.find(5); // Attempting to find node with value 5
+const foundNode = bfsTree.find(5); // Attempting to find node with value 5
 if (foundNode) {
 	console.log(`Found node with value: ${foundNode.value}`);
 } else {
