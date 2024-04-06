@@ -14,8 +14,9 @@
  * D is Tail.
  * All we have to do is keep track of head and tail.
  *
- * Performance. Push and Pop are constant.
+ * Performance. Add and Remove are constant.
  * Big O = O(1)
+ * Big 0 = 0(n) for FIND.
  *
  * Example on: https://github.com/zacharymorel/kata-machine/blob/3bf6245de9748cee74a833baea1ff66792845a6b/src/day1/Queue.ts
  */

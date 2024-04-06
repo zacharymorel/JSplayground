@@ -26,4 +26,26 @@
  *
  * Big O. Growth with respect of the input.
  * O(n)
+ *
+ * Special notes on memory.
+ * In a BFS, we store half the entire tree that is about the current level in the current queue.
+ *
+ * SHOULD USE PROPER QUEUE (linked list) WHEN DOING BFS.
+ *
+ * Queue
+ * Removing from the front O(1)
+ * Adding to the back will be O(1).
+ * Find is O(n)
+ *
+ * ArrayList is
+ *  O(1) push and pop
+ *  O(n) enqueue and dequeue.
+ *  0(1) find
+ *
+ *
+ * A DFS can use a Stack since it just push and pop to ArrayList which is O(1).
+ *
+ *
+ * With both DFS and BFS we are already doing a O(n) due to the traversal of the tree. If we choose the wrong data structure during the traversal, it can be O(n^2). I.e., Using an ArrayList for a BFS.
+ *
  */
