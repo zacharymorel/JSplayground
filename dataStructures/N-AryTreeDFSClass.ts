@@ -92,3 +92,28 @@ console.log(tree.find(4)); // Finds and logs the node with value 4
 tree.insertAt(2, 8); // Inserts a new node with value 8 as a child of the node with value
 tree.insertAt(8, 9); // Inserts a new node with value 8 as a child of the node with value
 tree.print();
+
+const dynamicChildrenTreeEx = `{
+    "value": 1,
+    "levelOne": [
+      {
+        "value": 2,
+        "levelTwo": [
+          { "value": 4 },
+          { "value": 5 }
+        ]
+      },
+      {
+        "value": 3,
+        "levelTwo": [
+          { "value": 6 },
+          { "value": 7,
+          "levelThree": [
+                { "value": 8 },
+                { "value": 9 }
+            ]
+           }
+        ]
+      }
+    ]
+  }`;
