@@ -48,4 +48,7 @@
  *
  * With both DFS and BFS we are already doing a O(n) due to the traversal of the tree. If we choose the wrong data structure during the traversal, it can be O(n^2). I.e., Using an ArrayList for a BFS.
  *
+ *
+ *
+ * For Binary Trees that delete and need to be balanced, you can use Red-Black or AVL algorithms to do so.
  */
