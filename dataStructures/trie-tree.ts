@@ -22,5 +22,6 @@
  *
  * What does the interview question look like for this:
  * "I have a list of words, and I want to build an autocomplete."
+ * "Or I want a caching mechanism."
  *
  * */
