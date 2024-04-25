@@ -22,10 +22,13 @@
  * INSERT
  *  In the example where we need to insert, we start from the bottom of the leafs and bubble up to
  *  we reach the highest first node that we are smaller than. Each node will will have to shift as we insert in place.
+ * WE ALWAY FILL FROM LEFT TO RIGHT.
  *
  * DELETE
  *  When we delete, we put the last node up in place of the one we deleted.
  *  Then we heap-ify down and check each node to see if our node is greater, if it is,
  *  we move that node down until we can't. This bubbles all over nodes back up that were smaller.
+ *
+ * Big O = Log N
  *
  */
