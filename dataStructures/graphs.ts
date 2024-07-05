@@ -56,5 +56,23 @@
  *  ],
  * ]
  *
- *
+ * 
+*   Breadth-First Search (BFS) and Depth-First Search (DFS) are fundamental graph traversal algorithms. Their time complexity depends on the representation of the graph }and the number of vertices and edges.
+    BFS and DFS Time Complexity
+
+    Adjacency List Representation:
+        Time Complexity: O(V + E)
+        Explanation: In an adjacency list, traversing all vertices (V) and their adjacent edges (E) results in O(V + E). This is because you visit each vertex and explore each edge once.
+
+    Adjacency Matrix Representation:
+        Time Complexity: O(V^2)
+        Explanation: In an adjacency matrix, checking for adjacent vertices takes O(V) time for each of the V vertices, resulting in O(V * V) = O(V^2).
+
+    Therefore, the time complexity of BFS and DFS is O(V + E) for graphs represented with adjacency lists and O(V^2) for graphs represented with adjacency matrices.
+    Summary
+
+        BFS and DFS are O(V + E) for adjacency list representation.
+        BFS and DFS are O(V^2) for adjacency matrix representation.
+
+    In practice, adjacency list representation is more common, especially for sparse graphs, leading to the more efficient O(V + E) complexity.
  */
